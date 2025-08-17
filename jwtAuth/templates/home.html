@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Data</title>
+  </head>
+  <body>
+    <h1>Student Data</h1>
+    <div id="data"></div>
+
+    <script>
+      //get accessToken
+      const accessToken = localStorage.getItem('access')
+      
+      if (!accessToken) {
+        //if token null
+        window.location.href = "{% url 'login' %}"
+      } else {
+        //if  token have
+        fetch('http://127.0.0.1:8000/getapi/', {
+          method: 'GET',
+          headers: {
+            Authorization: 'Bearer ' + accessToken,
+            'Content-Type': 'application/json'
+          }
+        })
+          .then((res) => {
+            if (res.status === 401) {
+              // Token invalid/expire → login page
+              window.location.href = "{% url 'login' %}"
+            }
+            return res.json()
+          })
+          .then((data) => {
+            const container = document.getElementById('data')
+      
+            data.forEach((student) => {
+              const div = document.createElement('div')
+              const Name = document.createElement('h3')
+              const department = document.createElement('h4')
+              const roll = document.createElement('p')
+      
+              //data replace in tag
+              Name.textContent = student.name
+              department.textContent = student.department
+              roll.textContent = student.roll
+      
+              //append child
+              div.append(Name, department, roll)
+              div.style.backgroundColor = 'yellow'
+      
+              //add in data daiv
+              container.appendChild(div)
+            })
+          })
+          .catch((err) => console.error(err))
+      }
+    </script>
+  </body>
+</html>

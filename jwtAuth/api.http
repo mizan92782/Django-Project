@@ -1,0 +1,46 @@
+GET http://127.0.0.1:8000/getapi/
+
+
+###
+POST http://127.0.0.1:8000/getapi/
+Content-Type: application/json
+
+{
+  "name": "mahbub",
+  "roll": 56,
+  "department": "cse",
+  "result": 4.25
+}
+
+### 
+POST http://127.0.0.1:8000/api/token/
+Content-Type: application/json
+
+
+{
+  "username":"suhan",
+  "password":"student999"
+}
+
+###
+GET http://127.0.0.1:8000/getapi/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1NDM1Mjc5LCJpYXQiOjE3NTU0MzQ5NzksImp0aSI6ImMxMWY4YzVkYWIyNzQ1NzY5MzM0ZGY3MWI2MWE0NThkIiwidXNlcl9pZCI6IjMifQ.m3gAicu0p8vSZ-40upJ-KdaWarvkVMwUXiAwfzQZHIM
+
+
+
+
+###
+POST http://127.0.0.1:8000/getapi/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1NDM1Mjc5LCJpYXQiOjE3NTU0MzQ5NzksImp0aSI6ImMxMWY4YzVkYWIyNzQ1NzY5MzM0ZGY3MWI2MWE0NThkIiwidXNlcl9pZCI6IjMifQ.m3gAicu0p8vSZ-40upJ-KdaWarvkVMwUXiAwfzQZHIM
+
+
+{
+  "name": "yasin",
+  "roll": 90,
+  "department": "cse",
+  "result": 4.25
+}
+
+

@@ -1,0 +1,40 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>login</h1>
+    <form action="">
+      <input type="text" name="username" id="username" />
+      <input type="password" name="password" id="password" />
+      <button onclick="getToken()">Button</button>
+    </form>
+
+    <script>
+      function getToken() {
+        event.preventDefault()
+        //get data from input
+        const username = document.getElementById('username').value
+        const password = document.getElementById('password').value
+      
+        //authorise user
+        fetch('http://127.0.0.1:8000/api/token/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: username, password: password })
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            //save access token and refresha token
+            localStorage.setItem('access', data.access)
+            localStorage.setItem('refresh', data.refresh)
+            window.location.href = "{% url 'home' %}"
+            //
+          })
+        //
+      }
+    </script>
+  </body>
+</html>
